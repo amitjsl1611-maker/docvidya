@@ -457,42 +457,68 @@
     .view-all-link .material-icons { font-size: 18px; }
     .view-all-link:hover { gap: 8px; }
 
-    /* ── Search + dropdown + filter row ── */
-    .search-filter-row {
+    /* ── Row 1: Specialty tabs + search ── */
+    .specialty-tabs-row {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 36px;
+      gap: 16px;
+      margin-bottom: 0;
     }
-    .search-filter-right {
+    .spec-tabs-scroll {
+      flex: 1;
+      overflow-x: auto;
+      scrollbar-width: none;
       display: flex;
+      gap: 6px;
+      padding: 4px 0 6px;
+    }
+    .spec-tabs-scroll::-webkit-scrollbar { display: none; }
+    .spec-tab {
+      display: inline-flex;
       align-items: center;
-      gap: 8px;
+      height: 36px;
+      padding: 0 16px;
+      border-radius: 100px;
+      border: 1.5px solid var(--border);
+      background: #fff;
+      font-family: inherit;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--text-body);
+      cursor: pointer;
+      white-space: nowrap;
       flex-shrink: 0;
+      transition: all 0.15s;
     }
-    .search-input-wrap {
+    .spec-tab:hover { border-color: var(--brand-primary); color: var(--brand-primary); }
+    .spec-tab.active {
+      background: var(--brand-primary);
+      border-color: var(--brand-primary);
+      color: #fff;
+      font-weight: 600;
+    }
+    .spec-search-wrap {
       position: relative;
-      width: 33%;
       flex-shrink: 0;
+      width: 210px;
     }
-    .search-input-wrap .material-icons {
+    .spec-search-wrap .material-icons {
       position: absolute;
-      left: 14px;
+      left: 12px;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 18px;
+      font-size: 17px;
       color: var(--text-muted);
       pointer-events: none;
     }
     .specialty-search {
       width: 100%;
-      height: 44px;
-      padding: 0 16px 0 44px;
+      height: 38px;
+      padding: 0 12px 0 38px;
       border: 1.5px solid var(--border);
-      border-radius: 10px;
+      border-radius: 100px;
       font-family: inherit;
-      font-size: 14px;
+      font-size: 13.5px;
       color: var(--text-heading);
       background: #fff;
       outline: none;
@@ -504,65 +530,48 @@
       box-shadow: 0 0 0 3px rgba(82,37,181,0.08);
     }
 
-    .specialty-select {
-      height: 44px;
-      padding: 0 36px 0 14px;
+    /* ── Row 2: Showing label + content-type dropdown + filter ── */
+    .content-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0 20px;
+      border-top: 1.5px solid var(--border);
+      margin-top: 8px;
+    }
+    .showing-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-heading);
+    }
+    .showing-label .showing-count {
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+    .content-type-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .content-type-select {
+      height: 38px;
+      padding: 0 32px 0 12px;
       border: 1.5px solid var(--border);
       border-radius: 10px;
       font-family: inherit;
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 500;
       color: var(--text-heading);
-      background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='%236B7280'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E") no-repeat right 10px center;
+      background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='%236B7280'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E") no-repeat right 8px center;
       -webkit-appearance: none;
       appearance: none;
       cursor: pointer;
       outline: none;
       transition: border-color 0.15s, box-shadow 0.15s;
-      white-space: nowrap;
-      flex-shrink: 0;
     }
-    .specialty-select:focus {
+    .content-type-select:focus {
       border-color: var(--brand-primary);
       box-shadow: 0 0 0 3px rgba(82,37,181,0.08);
-    }
-
-    /* ── Segmented content-type tabs ── */
-    .content-tabs-row {
-      display: flex;
-      align-items: stretch;
-      margin-bottom: 0;
-      border-bottom: 1.5px solid var(--border);
-      gap: 0;
-    }
-    .ctab {
-      flex: 1;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      height: 44px;
-      padding: 0 12px;
-      border: none;
-      border-bottom: 2.5px solid transparent;
-      margin-bottom: -1.5px;
-      border-radius: 0;
-      background: transparent;
-      font-family: inherit;
-      font-size: 13.5px;
-      font-weight: 500;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: color 0.18s, border-color 0.18s;
-      white-space: nowrap;
-    }
-    .ctab .material-icons { font-size: 15px; }
-    .ctab:hover { color: var(--brand-primary); }
-    .ctab.active {
-      color: var(--brand-primary);
-      border-bottom-color: var(--brand-primary);
-      font-weight: 600;
-      background: transparent;
     }
 
     /* Filter icon button + floating panel */
@@ -1293,33 +1302,19 @@
       .discovery-header-left h2 { font-size: 26px; margin-bottom: 6px; }
       .discovery-header-left p  { font-size: 14px; -webkit-line-clamp: 3; }
 
-      /* — Search + filter row — */
-      .search-filter-row {
+      /* — Specialty tabs row — */
+      .specialty-tabs-row {
         flex-direction: column;
         align-items: stretch;
         gap: 10px;
-        margin-bottom: 20px;
       }
-      .search-input-wrap { width: 100%; }
-      .search-filter-right { justify-content: space-between; }
-      .specialty-select { flex: 1; }
+      .spec-search-wrap { width: 100%; }
+      .specialty-search { border-radius: 10px; }
 
-      /* — Tabs row: horizontally scrollable — */
-      .content-tabs-row {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        gap: 0;
-      }
-      .content-tabs-row::-webkit-scrollbar { display: none; }
-      .ctab {
-        flex: 0 0 auto;
-        font-size: 12.5px;
-        padding: 0 10px;
-        height: 40px;
-        gap: 4px;
-      }
-      .ctab .material-icons { font-size: 14px; }
+      /* — Content meta row — */
+      .content-meta-row { padding: 12px 0 16px; }
+      .showing-label { font-size: 13px; }
+      .content-type-select { font-size: 12.5px; }
 
       /* — Editorial grids — */
       .grid-editorial-bottom,
@@ -1465,24 +1460,38 @@
         </div>
       </div>
 
-      <!-- Search + Specialty dropdown + Filter button -->
-      <div class="search-filter-row reveal" style="transition-delay:0.1s">
-        <div class="search-input-wrap">
-          <span class="material-icons">search</span>
-          <input type="search" class="specialty-search" id="specialtySearch" placeholder="Search by specialty..." autocomplete="off" />
+      <!-- Row 1: Specialty tabs + search -->
+      <div class="specialty-tabs-row reveal" style="transition-delay:0.1s">
+        <div class="spec-tabs-scroll" id="specTabsScroll">
+          <button class="spec-tab active" data-spec="cardiology">Cardiology</button>
+          <button class="spec-tab" data-spec="neurology">Neurology</button>
+          <button class="spec-tab" data-spec="dermatology">Dermatology</button>
+          <button class="spec-tab" data-spec="orthopaedics">Orthopaedics</button>
+          <button class="spec-tab" data-spec="oncology">Oncology</button>
+          <button class="spec-tab" data-spec="paediatrics">Paediatrics</button>
+          <button class="spec-tab" data-spec="radiology">Radiology</button>
+          <button class="spec-tab" data-spec="endocrinology">Endocrinology</button>
+          <button class="spec-tab" data-spec="general-medicine">General Medicine</button>
+          <button class="spec-tab" data-spec="pulmonology">Pulmonology</button>
         </div>
-        <div class="search-filter-right">
-          <select class="specialty-select" id="specialtySelect" aria-label="Select specialty">
-            <option value="cardiology">Cardiology</option>
-            <option value="neurology">Neurology</option>
-            <option value="dermatology">Dermatology</option>
-            <option value="orthopaedics">Orthopaedics</option>
-            <option value="oncology">Oncology</option>
-            <option value="paediatrics">Paediatrics</option>
-            <option value="radiology">Radiology</option>
-            <option value="endocrinology">Endocrinology</option>
-            <option value="general-medicine">General Medicine</option>
-            <option value="pulmonology">Pulmonology</option>
+        <div class="spec-search-wrap">
+          <span class="material-icons">search</span>
+          <input type="search" class="specialty-search" id="specialtySearch" placeholder="Search specialty..." autocomplete="off" />
+        </div>
+      </div>
+
+      <!-- Row 2: Showing label + content-type dropdown + filter -->
+      <div class="content-meta-row reveal" style="transition-delay:0.18s">
+        <span class="showing-label" id="showingLabel">Showing All <span class="showing-count">(6)</span></span>
+        <div class="content-type-right">
+          <select class="content-type-select" id="contentTypeSelect" aria-label="Content type">
+            <option value="all">All Content</option>
+            <option value="webinars">Webinars</option>
+            <option value="videos">Videos</option>
+            <option value="articles">Articles</option>
+            <option value="courses">Courses</option>
+            <option value="cases">Cases</option>
+            <option value="guidelines">Guidelines</option>
           </select>
           <div class="filter-btn-wrap">
             <button class="filter-icon-btn" id="filterToggle" aria-label="Filters" aria-expanded="false">
@@ -1500,17 +1509,6 @@
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- Segmented content-type tabs -->
-      <div class="content-tabs-row reveal" id="contentTabsRow" style="transition-delay:0.18s">
-        <button class="ctab active" data-tab="all"><span class="material-icons">dashboard</span>All</button>
-        <button class="ctab" data-tab="webinars"><span class="material-icons">live_tv</span>Webinars</button>
-        <button class="ctab" data-tab="videos"><span class="material-icons">play_circle</span>Videos</button>
-        <button class="ctab" data-tab="articles"><span class="material-icons">article</span>Articles</button>
-        <button class="ctab" data-tab="courses"><span class="material-icons">school</span>Courses</button>
-        <button class="ctab" data-tab="cases"><span class="material-icons">medical_services</span>Cases</button>
-        <button class="ctab" data-tab="guidelines"><span class="material-icons">library_books</span>Guidelines</button>
       </div>
 
       <!-- Content area -->
@@ -1802,23 +1800,53 @@
     }, 180);
   }
 
-  /* ── Specialty dropdown ──────────────────────────────── */
-  document.getElementById('specialtySearch').addEventListener('input', e => {
-    const q = e.target.value.toLowerCase();
-    const sel = document.getElementById('specialtySelect');
-    Array.from(sel.options).forEach(opt => {
-      opt.hidden = q.length > 0 && !opt.text.toLowerCase().includes(q);
-    });
-  });
+  /* ── Count items for showing label ──────────────────── */
+  function countItems(data, tab) {
+    if (tab === 'all') return (data.cards || []).length + 1; // +1 for featured
+    const typeMap = { webinars:'webinar', videos:'video', articles:'article', courses:'course', cases:'case', guidelines:'guide' };
+    const targetType = typeMap[tab];
+    let count = (data.cards || []).filter(c => c.type === targetType).length;
+    if (tab === 'webinars') count += 1; // featured webinar
+    return count;
+  }
 
-  document.getElementById('specialtySelect').addEventListener('change', e => {
-    activeSpecialty = e.target.value;
+  function updateShowingLabel() {
+    const data = content[activeSpecialty] || defaultContent;
+    const n = countItems(data, activeTab);
+    const typeLabels = { all:'All', webinars:'Webinars', videos:'Videos', articles:'Articles', courses:'Courses', cases:'Cases', guidelines:'Guidelines' };
+    document.getElementById('showingLabel').innerHTML =
+      `Showing ${typeLabels[activeTab]} <span class="showing-count">(${n})</span>`;
+  }
+
+  /* ── Specialty tabs ──────────────────────────────────── */
+  document.getElementById('specTabsScroll').addEventListener('click', e => {
+    const btn = e.target.closest('[data-spec]');
+    if (!btn) return;
+    document.querySelectorAll('.spec-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    activeSpecialty = btn.dataset.spec;
     activeTab = 'all';
-    document.querySelectorAll('.fpanel-tab, .ctab').forEach(t => t.classList.toggle('active', t.dataset.tab === 'all'));
+    document.getElementById('contentTypeSelect').value = 'all';
+    updateShowingLabel();
     render();
   });
 
-/* ── Filter toggle button ────────────────────────────── */
+  /* ── Specialty search — filter tabs ─────────────────── */
+  document.getElementById('specialtySearch').addEventListener('input', e => {
+    const q = e.target.value.toLowerCase().trim();
+    document.querySelectorAll('.spec-tab').forEach(btn => {
+      btn.style.display = (!q || btn.dataset.spec.includes(q) || btn.textContent.toLowerCase().includes(q)) ? '' : 'none';
+    });
+  });
+
+  /* ── Content-type dropdown ───────────────────────────── */
+  document.getElementById('contentTypeSelect').addEventListener('change', e => {
+    activeTab = e.target.value;
+    updateShowingLabel();
+    render();
+  });
+
+  /* ── Filter toggle button ────────────────────────────── */
   const filterToggle = document.getElementById('filterToggle');
   const filterPanel  = document.getElementById('filterPanel');
   filterToggle.addEventListener('click', e => {
@@ -1839,35 +1867,18 @@
       filterToggle.setAttribute('aria-expanded', 'false');
     }
   });
-
-  /* ── Filter panel tabs ───────────────────────────────── */
   document.getElementById('filterPanel').addEventListener('click', e => {
-    const tab = e.target.closest('[data-tab]');
-    if (tab) {
-      document.querySelectorAll('.fpanel-tab').forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      activeTab = tab.dataset.tab;
-      render();
-      return;
-    }
     const pill = e.target.closest('[data-filter]');
-    if (pill) {
-      pill.classList.toggle('active');
-    }
+    if (pill) pill.classList.toggle('active');
   });
 
   /* ── Expose for empty state button ──────────────────── */
   function switchTab(tab) {
     activeTab = tab;
-    document.querySelectorAll('.fpanel-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
-    document.querySelectorAll('.ctab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+    document.getElementById('contentTypeSelect').value = tab;
+    updateShowingLabel();
     render();
   }
-
-  document.getElementById('contentTabsRow').addEventListener('click', e => {
-    const btn = e.target.closest('[data-tab]');
-    if (btn) switchTab(btn.dataset.tab);
-  });
 
   /* ── Scroll reveal observer ─────────────────────────── */
   function observeReveal() {
@@ -1890,6 +1901,7 @@
   }
 
   /* ── Initial render ──────────────────────────────────── */
+  updateShowingLabel();
   render();
   setTimeout(observeReveal, 200);
 
